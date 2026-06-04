@@ -8,7 +8,7 @@
 
 ## 🚀 Live Demo
 
-**Production:** [https://talentlayer.vercel.app](https://talentlayer.vercel.app)
+**Production:** [https://job-board-task-seven.vercel.app/](https://job-board-task-seven.vercel.app/)
 
 ---
 
