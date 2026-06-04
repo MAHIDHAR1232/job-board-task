@@ -9,7 +9,7 @@
       <img src="https://github.com/MAHIDHAR1232/job-board-task/blob/d15a76cb3c5873ccff2848c1d258e214f7d02a93/image_1"/>
     </td>
     <td>
-      <img src="https://github.com/MAHIDHAR1232/job-board-task/blob/a2a3bbcd4f0ed01a69b7d526ba28153995f3252d/Screenshot%202026-06-04%20at%207.35.05%20PM.jpg?raw=true" width="100%"/>
+      <img src="https://github.com/MAHIDHAR1232/job-board-task/blob/2a49fcadee8a728c5d0ab1176466ede6de639b9c/image_3/>
     </td>
   </tr>
 </table>
