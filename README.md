@@ -6,7 +6,7 @@
 <table>
   <tr>
     <td>
-      <img src="https://github.com/MAHIDHAR1232/job-board-task/blob/4bf417e9a7cc8a33a992de1b12f2cd70186941f0/Screenshot%202026-06-04%20at%207.31.42%20PM.jpg?raw=true" width="100%"/>
+      <img src="https://github.com/MAHIDHAR1232/job-board-task/blob/d15a76cb3c5873ccff2848c1d258e214f7d02a93/image_1"/>
     </td>
     <td>
       <img src="https://github.com/MAHIDHAR1232/job-board-task/blob/a2a3bbcd4f0ed01a69b7d526ba28153995f3252d/Screenshot%202026-06-04%20at%207.35.05%20PM.jpg?raw=true" width="100%"/>
