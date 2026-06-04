@@ -1,7 +1,5 @@
 # TalentLayer — Job Board
 
-> A modern, fast, and beautifully designed job board for finding tech roles that actually fit you.
-
 ![TalentLayer Preview](https://img.shields.io/badge/Status-Live-brightgreen) ![License](https://img.shields.io/badge/License-MIT-blue) ![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-orange) ![Deploy](https://img.shields.io/badge/Deploy-Vercel-black)
 
 ---
