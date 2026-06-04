@@ -1,0 +1,352 @@
+/* ============================================================
+   sidebar.css — Filter sidebar styles
+   ============================================================ */
+
+.main {
+  max-width: 1200px;
+  margin: 3rem auto 0;
+  padding: 0 2rem 4rem;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.sidebar {
+  position: sticky;
+  top: 80px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.sidebar h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink3);
+  margin-bottom: 1rem;
+}
+
+.filter-section { margin-bottom: 1.5rem; }
+
+.filter-section h4 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink2);
+  margin-bottom: 10px;
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  cursor: pointer;
+}
+
+.filter-option input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent2);
+  cursor: pointer;
+}
+
+.filter-option label {
+  font-size: 13.5px;
+  color: var(--ink2);
+  cursor: pointer;
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.filter-count { color: var(--ink3); font-size: 12px; }
+
+.filter-divider { border: none; border-top: 1px solid var(--border); margin: 1.2rem 0; }
+
+/* Salary slider */
+.salary-range { display: flex; flex-direction: column; gap: 8px; }
+
+.salary-range input[type="range"] {
+  width: 100%;
+  accent-color: var(--accent2);
+}
+
+.salary-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--ink3);
+}
+
+/* Clear button */
+.btn-clear {
+  width: 100%;
+  padding: 9px;
+  border: 1.5px solid var(--border2);
+  background: transparent;
+  border-radius: var(--radius);
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 13px;
+  color: var(--ink2);
+  cursor: pointer;
+  transition: all 0.15s;
+  font-weight: 500;
+}
+
+.btn-clear:hover { border-color: var(--accent2); color: var(--accent2); }
+
+
+/* ============================================================
+   jobcard.css — Job listing cards, grid, and pagination
+   ============================================================ */
+
+/* List header bar */
+.job-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+}
+
+.job-count {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.job-count span {
+  color: var(--ink3);
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.sort-select {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 13px;
+  color: var(--ink2);
+  background: var(--card);
+  cursor: pointer;
+  outline: none;
+}
+
+/* View toggle buttons */
+.view-toggle { display: flex; gap: 4px; }
+
+.view-btn {
+  width: 32px; height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--card);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--ink3);
+  transition: all 0.15s;
+}
+
+.view-btn.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+/* Job grid layout */
+.jobs-grid { display: flex; flex-direction: column; gap: 14px; }
+.jobs-grid.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+/* Individual job card */
+.job-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.4rem;
+  cursor: pointer;
+  transition: box-shadow 0.2s, border-color 0.2s, transform 0.15s;
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 0.35s ease both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.job-card:hover {
+  box-shadow: var(--shadow-hover);
+  border-color: var(--border2);
+  transform: translateY(-2px);
+}
+
+.job-card.featured {
+  border-color: var(--accent2);
+  border-left: 3px solid var(--accent2);
+}
+
+.job-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+/* Company logo box */
+.company-logo {
+  width: 46px; height: 46px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.card-right { display: flex; align-items: center; gap: 8px; }
+
+/* Save heart button */
+.save-btn {
+  width: 32px; height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: transparent;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.15s;
+  color: var(--ink3);
+}
+
+.save-btn:hover, .save-btn.saved { color: var(--accent2); border-color: var(--accent2); }
+
+/* Featured badge */
+.badge-featured {
+  background: var(--accent-light);
+  color: var(--accent2);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 100px;
+  letter-spacing: 0.03em;
+}
+
+/* Card text */
+.job-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.company-name { font-size: 13.5px; color: var(--ink2); font-weight: 500; }
+
+.job-meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+
+.meta-tag { display: flex; align-items: center; gap: 5px; font-size: 12.5px; color: var(--ink2); }
+
+.meta-icon { font-size: 14px; }
+
+/* Skill tags */
+.job-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+
+.tag {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  color: var(--ink2);
+  background: var(--paper);
+  transition: all 0.15s;
+}
+
+.tag:hover {
+  border-color: var(--accent2);
+  color: var(--accent2);
+  background: var(--accent-light);
+  cursor: pointer;
+}
+
+/* Card footer */
+.job-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.salary {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.salary-period { font-size: 12px; font-weight: 400; color: var(--ink3); margin-left: 2px; }
+.posted-date   { font-size: 12px; color: var(--ink3); }
+
+/* Job type colour badges */
+.job-type-badge { font-size: 11.5px; font-weight: 600; padding: 4px 10px; border-radius: 6px; }
+.type-full     { background: var(--green-bg);  color: var(--green);  }
+.type-part     { background: var(--blue-bg);   color: var(--blue);   }
+.type-contract { background: var(--purple-bg); color: var(--purple); }
+.type-remote   { background: var(--amber-bg);  color: var(--amber);  }
+.type-intern   { background: #f0f9ff;           color: #0369a1;       }
+
+/* Apply button on card */
+.btn-apply {
+  background: var(--ink);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.btn-apply:hover { background: var(--accent2); transform: scale(1.02); }
+
+/* Pagination */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 2.5rem;
+}
+
+.page-btn {
+  width: 36px; height: 36px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--card);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink2);
+  transition: all 0.15s;
+}
+
+.page-btn:hover,
+.page-btn.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+/* Empty state */
+.empty-state { text-align: center; padding: 4rem 2rem; color: var(--ink3); }
+.empty-state .icon { font-size: 3rem; margin-bottom: 1rem; }
+.empty-state h3 { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--ink2); margin-bottom: 0.5rem; }

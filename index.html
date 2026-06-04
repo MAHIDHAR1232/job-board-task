@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TalentLayer — Find Your Next Role</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+
+  <!-- CSS Files (order matters) -->
+  <link rel="stylesheet" href="css/variables.css" />           <!-- design tokens, reset -->
+  <link rel="stylesheet" href="css/navbar-hero.css" />         <!-- nav, hero, search, stats, pills -->
+  <link rel="stylesheet" href="css/sidebar-jobcard.css" />     <!-- filters sidebar + job cards -->
+  <link rel="stylesheet" href="css/modal-form-toast-responsive.css" /> <!-- modals, form, toast, media queries -->
+</head>
+<body>
+
+<!-- ── NAVIGATION ─────────────────────────────────────────── -->
+<nav>
+  <a class="nav-logo" href="#">Talent<span class="logo-dot">Layer</span></a>
+  <div class="nav-links">
+    <a href="#" onclick="setCategory('all', document.querySelector('.category-pill'))">Browse Jobs</a>
+    <a href="#" onclick="openPostModal()">For Employers</a>
+    <a href="#" onclick="showSaved()">Saved Jobs</a>
+    <a href="#" class="btn-post" onclick="openPostModal()">Post a Job</a>
+  </div>
+</nav>
+
+<!-- ── HERO ───────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-badge">✦ 2,400+ Active Listings</div>
+  <h1>Find Work That <em>Actually</em> Fits You</h1>
+  <p>Curated roles from companies that care. No resume black holes. No ghost jobs.</p>
+  <div class="search-bar">
+    <span style="font-size:18px; color:var(--ink3)">🔍</span>
+    <input type="text" id="searchInput" placeholder="Job title, skills, or keywords..." oninput="filterJobs()" />
+    <div class="search-divider"></div>
+    <select id="locationFilter" onchange="filterJobs()">
+      <option value="">All Locations</option>
+      <option value="Remote">Remote</option>
+      <option value="New York">New York</option>
+      <option value="San Francisco">San Francisco</option>
+      <option value="London">London</option>
+      <option value="Berlin">Berlin</option>
+      <option value="Austin">Austin</option>
+      <option value="Toronto">Toronto</option>
+    </select>
+    <button class="btn-search" onclick="filterJobs()">Search Jobs</button>
+  </div>
+</section>
+
+<!-- ── CATEGORY PILLS ─────────────────────────────────────── -->
+<div class="categories" id="categoryPills">
+  <button class="category-pill active" onclick="setCategory('all', this)">🌐 All</button>
+  <button class="category-pill" onclick="setCategory('Engineering', this)">⚙️ Engineering</button>
+  <button class="category-pill" onclick="setCategory('Design', this)">🎨 Design</button>
+  <button class="category-pill" onclick="setCategory('Product', this)">📦 Product</button>
+  <button class="category-pill" onclick="setCategory('Marketing', this)">📣 Marketing</button>
+  <button class="category-pill" onclick="setCategory('Data', this)">📊 Data</button>
+  <button class="category-pill" onclick="setCategory('Finance', this)">💰 Finance</button>
+  <button class="category-pill" onclick="setCategory('Operations', this)">🔧 Operations</button>
+</div>
+
+<!-- ── STATS ──────────────────────────────────────────────── -->
+<div class="stats">
+  <div class="stat"><div class="stat-num">2,418</div><div class="stat-label">Open Roles</div></div>
+  <div class="stat"><div class="stat-num">840+</div><div class="stat-label">Companies Hiring</div></div>
+  <div class="stat"><div class="stat-num">94%</div><div class="stat-label">Response Rate</div></div>
+  <div class="stat"><div class="stat-num">18 days</div><div class="stat-label">Avg. Time to Hire</div></div>
+</div>
+
+<!-- ── MAIN LAYOUT ────────────────────────────────────────── -->
+<div class="main">
+
+  <!-- SIDEBAR FILTERS -->
+  <aside class="sidebar">
+    <h3>Filters</h3>
+
+    <div class="filter-section">
+      <h4>Job Type</h4>
+      <div class="filter-option"><input type="checkbox" id="f-full"     value="Full-Time"  onchange="filterJobs()"><label for="f-full">Full-Time   <span class="filter-count">1,204</span></label></div>
+      <div class="filter-option"><input type="checkbox" id="f-part"     value="Part-Time"  onchange="filterJobs()"><label for="f-part">Part-Time   <span class="filter-count">387</span></label></div>
+      <div class="filter-option"><input type="checkbox" id="f-contract" value="Contract"   onchange="filterJobs()"><label for="f-contract">Contract  <span class="filter-count">529</span></label></div>
+      <div class="filter-option"><input type="checkbox" id="f-intern"   value="Internship" onchange="filterJobs()"><label for="f-intern">Internship  <span class="filter-count">298</span></label></div>
+    </div>
+
+    <hr class="filter-divider" />
+
+    <div class="filter-section">
+      <h4>Experience Level</h4>
+      <div class="filter-option"><input type="checkbox" id="f-entry"  value="Entry"  onchange="filterJobs()"><label for="f-entry">Entry Level    <span class="filter-count">456</span></label></div>
+      <div class="filter-option"><input type="checkbox" id="f-mid"    value="Mid"    onchange="filterJobs()"><label for="f-mid">Mid Level       <span class="filter-count">712</span></label></div>
+      <div class="filter-option"><input type="checkbox" id="f-senior" value="Senior" onchange="filterJobs()"><label for="f-senior">Senior Level  <span class="filter-count">890</span></label></div>
+      <div class="filter-option"><input type="checkbox" id="f-lead"   value="Lead"   onchange="filterJobs()"><label for="f-lead">Lead / Manager  <span class="filter-count">360</span></label></div>
+    </div>
+
+    <hr class="filter-divider" />
+
+    <div class="filter-section">
+      <h4>Work Mode</h4>
+      <div class="filter-option"><input type="checkbox" id="f-remote" value="Remote"  onchange="filterJobs()"><label for="f-remote">Remote  <span class="filter-count">934</span></label></div>
+      <div class="filter-option"><input type="checkbox" id="f-hybrid" value="Hybrid"  onchange="filterJobs()"><label for="f-hybrid">Hybrid  <span class="filter-count">670</span></label></div>
+      <div class="filter-option"><input type="checkbox" id="f-onsite" value="On-Site" onchange="filterJobs()"><label for="f-onsite">On-Site <span class="filter-count">814</span></label></div>
+    </div>
+
+    <hr class="filter-divider" />
+
+    <div class="filter-section">
+      <h4>Salary Range</h4>
+      <div class="salary-range">
+        <input type="range" id="salaryRange" min="30" max="300" value="300" step="10"
+               oninput="updateSalaryLabel(this.value); filterJobs()">
+        <div class="salary-labels">
+          <span>$30k</span>
+          <span id="salaryLabel">Up to $300k+</span>
+        </div>
+      </div>
+    </div>
+
+    <hr class="filter-divider" />
+    <button class="btn-clear" onclick="clearFilters()">Clear All Filters</button>
+  </aside>
+
+  <!-- JOB LISTINGS -->
+  <div>
+    <div class="job-list-header">
+      <div class="job-count" id="jobCount">Loading… <span></span></div>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div class="view-toggle">
+          <button class="view-btn active" id="listViewBtn" onclick="setView('list')" title="List view">☰</button>
+          <button class="view-btn"        id="gridViewBtn" onclick="setView('grid')" title="Grid view">⊞</button>
+        </div>
+        <select class="sort-select" id="sortSelect" onchange="filterJobs()">
+          <option value="recent">Most Recent</option>
+          <option value="salary-high">Salary: High to Low</option>
+          <option value="salary-low">Salary: Low to High</option>
+          <option value="featured">Featured First</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="jobs-grid" id="jobsGrid"></div>
+    <div class="pagination"  id="pagination"></div>
+  </div>
+
+</div><!-- end .main -->
+
+<!-- ── JOB DETAIL MODAL ───────────────────────────────────── -->
+<div class="modal-overlay" id="jobModal" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="company-logo" id="modal-logo" style="width:56px; height:56px; font-size:18px;"></div>
+      <div>
+        <div class="modal-title"   id="modal-title"></div>
+        <div class="modal-company" id="modal-company"></div>
+      </div>
+      <button class="modal-close" onclick="closeJobModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-meta" id="modal-meta"></div>
+      <div class="modal-section-title">About the Role</div>
+      <div class="modal-desc" id="modal-desc"></div>
+      <div class="modal-section-title">Requirements</div>
+      <div class="modal-desc" id="modal-reqs"></div>
+      <div class="modal-section-title">What We Offer</div>
+      <div class="modal-desc" id="modal-perks"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-apply-lg" onclick="applyToJob()">Apply Now →</button>
+      <button class="btn-save-lg"  onclick="saveModalJob()">♡ Save Job</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── POST A JOB MODAL ───────────────────────────────────── -->
+<div class="modal-overlay" id="postModal" onclick="closePostModal(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title">Post a Job</div>
+        <div class="modal-company" style="font-size:13px; margin-top:2px;">Reach thousands of qualified candidates</div>
+      </div>
+      <button class="modal-close" onclick="document.getElementById('postModal').classList.remove('open')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="form-group"><label>Job Title*</label><input type="text" id="p-title" placeholder="e.g. Senior Product Designer"></div>
+        <div class="form-group"><label>Company Name*</label><input type="text" id="p-company" placeholder="Your company name"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Location*</label><input type="text" id="p-location" placeholder="City or Remote"></div>
+        <div class="form-group"><label>Job Type*</label>
+          <select id="p-type"><option>Full-Time</option><option>Part-Time</option><option>Contract</option><option>Internship</option></select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Salary Range</label><input type="text" id="p-salary" placeholder="e.g. $80,000 – $120,000"></div>
+        <div class="form-group"><label>Category</label>
+          <select id="p-category"><option>Engineering</option><option>Design</option><option>Product</option><option>Marketing</option><option>Data</option><option>Finance</option><option>Operations</option></select>
+        </div>
+      </div>
+      <div class="form-group"><label>Work Mode</label>
+        <select id="p-workmode"><option>Remote</option><option>Hybrid</option><option>On-Site</option></select>
+      </div>
+      <div class="form-group"><label>Job Description*</label><textarea id="p-desc" placeholder="Describe the role, responsibilities, and ideal candidate..."></textarea></div>
+      <div class="form-group"><label>Requirements</label><textarea id="p-reqs" placeholder="List required skills, experience, and qualifications..."></textarea></div>
+      <div class="form-group"><label>Contact Email*</label><input type="email" id="p-email" placeholder="hiring@yourcompany.com"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-apply-lg" onclick="submitJob()">Post This Job →</button>
+      <button class="btn-save-lg"  onclick="document.getElementById('postModal').classList.remove('open')">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── TOAST ──────────────────────────────────────────────── -->
+<div class="toast" id="toast"></div>
+
+<!-- ── JAVASCRIPT FILES (load order matters) ─────────────── -->
+<script src="js/data.js"></script>      <!-- job listings data -->
+<script src="js/filters.js"></script>   <!-- state, filter logic, pagination -->
+<script src="js/render.js"></script>    <!-- build & inject job card HTML -->
+<script src="js/modal.js"></script>     <!-- open/close modals -->
+<script src="js/actions.js"></script>   <!-- save, apply, post job, toast -->
+
+<script>
+  // ── INIT: render jobs on page load ──
+  renderJobs();
+</script>
+
+</body>
+</html>

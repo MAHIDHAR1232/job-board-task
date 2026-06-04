@@ -1,0 +1,230 @@
+/* ============================================================
+   modal.css — Job detail modal, post job modal, toast
+   ============================================================ */
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10,10,10,0.55);
+  backdrop-filter: blur(4px);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.modal-overlay.open { display: flex; }
+
+.modal {
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  max-width: 680px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  animation: slideUp 0.25s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.modal-header {
+  padding: 2rem 2rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: var(--card);
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.modal-close {
+  margin-left: auto;
+  width: 32px; height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink3);
+  flex-shrink: 0;
+  transition: all 0.15s;
+}
+
+.modal-close:hover { background: var(--paper); color: var(--ink); }
+
+.modal-body { padding: 1.5rem 2rem 2rem; }
+
+.modal-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.modal-company { font-size: 15px; font-weight: 500; color: var(--ink2); }
+
+.modal-meta { display: flex; flex-wrap: wrap; gap: 10px; margin: 1.2rem 0; }
+
+.modal-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  color: var(--ink2);
+  background: var(--paper);
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+.modal-section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink3);
+  margin: 1.5rem 0 0.7rem;
+}
+
+.modal-desc { font-size: 14.5px; line-height: 1.75; color: var(--ink2); }
+.modal-desc ul { padding-left: 1.2rem; }
+.modal-desc li { margin-bottom: 6px; }
+
+.modal-footer {
+  padding: 1.5rem 2rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--paper);
+}
+
+/* Large apply button (inside modal) */
+.btn-apply-lg {
+  background: var(--accent2);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 13px 28px;
+  font-family: 'Syne', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  flex: 1;
+}
+
+.btn-apply-lg:hover { background: #c73c0a; transform: scale(1.01); }
+
+/* Large save button (inside modal) */
+.btn-save-lg {
+  padding: 12px 20px;
+  border: 1.5px solid var(--border2);
+  border-radius: 10px;
+  background: transparent;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink2);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-save-lg:hover { border-color: var(--accent2); color: var(--accent2); }
+
+
+/* ============================================================
+   form.css — Post a Job form fields
+   ============================================================ */
+
+.form-group { margin-bottom: 1.2rem; }
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink2);
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 14px;
+  color: var(--ink);
+  background: var(--paper);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--accent2);
+}
+
+.form-group textarea { min-height: 100px; resize: vertical; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+
+/* ============================================================
+   toast.css — Notification toast popup
+   ============================================================ */
+
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--ink);
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: var(--shadow-hover);
+  z-index: 300;
+  display: none;
+  animation: toastIn 0.25s ease;
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+
+
+/* ============================================================
+   responsive.css — Mobile & tablet breakpoints
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .main { grid-template-columns: 1fr; }
+  .sidebar { position: static; }
+  nav { padding: 0 1rem; }
+  .nav-links a:not(.btn-post) { display: none; }
+  .hero { padding: 3rem 1rem 2rem; }
+  .stats { gap: 1.5rem; }
+}
+
+@media (max-width: 600px) {
+  .search-bar { flex-wrap: wrap; padding: 10px; }
+  .search-divider { display: none; }
+  .search-bar select { display: none; }
+  .form-row { grid-template-columns: 1fr; }
+  .jobs-grid.grid-2 { grid-template-columns: 1fr; }
+  .stats { display: grid; grid-template-columns: 1fr 1fr; }
+}
