@@ -249,9 +249,3 @@ Single HTML file → ~50kb uncompressed, ~18kb gzipped. No JavaScript frameworks
 ## 📄 License
 
 MIT — free to use, modify, and deploy.
-
----
-
-## 🙏 Credits
-
-Built with [Syne](https://fonts.google.com/specimen/Syne) and [Instrument Sans](https://fonts.google.com/specimen/Instrument+Sans) typefaces. Deployed on [Vercel](https://vercel.com).
