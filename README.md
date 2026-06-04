@@ -3,16 +3,6 @@
 ![TalentLayer Preview](https://img.shields.io/badge/Status-Live-brightgreen) ![License](https://img.shields.io/badge/License-MIT-blue) ![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-orange) ![Deploy](https://img.shields.io/badge/Deploy-Vercel-black)
 
 ---
-<table>
-  <tr>
-    <td>
-      <img src="https://github.com/MAHIDHAR1232/job-board-task/blob/d15a76cb3c5873ccff2848c1d258e214f7d02a93/image_1"/>
-    </td>
-    <td>
-      <img src="https://github.com/MAHIDHAR1232/job-board-task/blob/2a49fcadee8a728c5d0ab1176466ede6de639b9c/image_3/>
-    </td>
-  </tr>
-</table>
 
 ## 🚀 Live Demo
 
