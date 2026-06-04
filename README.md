@@ -4,6 +4,7 @@
 
 ---
 ![image alt](https://github.com/MAHIDHAR1232/job-board-task/blob/4bf417e9a7cc8a33a992de1b12f2cd70186941f0/Screenshot%202026-06-04%20at%207.31.42%20PM.jpg)
+![image alt](https://github.com/MAHIDHAR1232/job-board-task/blob/a2a3bbcd4f0ed01a69b7d526ba28153995f3252d/Screenshot%202026-06-04%20at%207.35.05%20PM.jpg)
 
 ## 🚀 Live Demo
 
